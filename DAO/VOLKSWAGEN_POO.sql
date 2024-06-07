@@ -168,3 +168,190 @@ SELECT * FROM DEPARTAMENTO;
 SELECT * FROM FUNCIONARIO;
 SELECT * FROM FUNCIONARIO_HAS_PROJETO;
 SELECT * FROM PROJETO;
+
+
+-- validar função do Lucas 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Date;
+
+public class FuncionarioDAO extends GenericDAO<Funcionario, Integer> {
+    private static final String CREATE_QUERY = "INSERT INTO FUNCIONARIO (CPF, PRIMEIRO_NOME, ULTIMO_NOME, ENDERECO, DATA_NASC, DDD, TELEFONE, DEPARTAMENTO_COD_DEP) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String READ_QUERY = "SELECT * FROM FUNCIONARIO WHERE COD_FUNC = ?";
+    private static final String READ_ALL_QUERY = "SELECT * FROM FUNCIONARIO";
+    private static final String UPDATE_QUERY = "UPDATE FUNCIONARIO SET CPF = ?, PRIMEIRO_NOME = ?, ULTIMO_NOME = ?, ENDERECO = ?, DATA_NASC = ?, DDD = ?, TELEFONE = ?, DEPARTAMENTO_COD_DEP = ? WHERE COD_FUNC = ?";
+    private static final String DELETE_QUERY = "DELETE FROM FUNCIONARIO WHERE COD_FUNC = ?";
+    private Funcionario funcionario; // Adicionando a entidade Funcionário como atributo
+    private Connection connection;
+
+    public FuncionarioDAO(Connection connection, Funcionario funcionario) {
+        super(connection);
+        this.funcionario = funcionario;
+        this.connection = connection;
+    }
+
+    @Override
+    public void create(Funcionario funcionario) throws SQLException {
+        try (PreparedStatement statement = connection.prepareStatement(CREATE_QUERY)) {
+            statement.setString(1, funcionario.getCpf());
+            statement.setString(2, funcionario.getPrimeiroNome());
+            statement.setString(3, funcionario.getUltimoNome());
+            statement.setString(4, funcionario.getEndereco());
+            statement.setDate(5, new java.sql.Date(funcionario.getDataNasc().getTime()));
+            statement.setInt(6, funcionario.getDdd());
+            statement.setInt(7, funcionario.getTelefone());
+            statement.setInt(8, funcionario.getDepartamento().getCodDep()); // Acessando o código do departamento associado ao funcionário
+            statement.executeUpdate();
+        }
+    }
+
+    @Override
+    protected Funcionario resultSetToEntity(ResultSet rs) throws SQLException {
+        Funcionario funcionario = new Funcionario();
+        funcionario.setCodFunc(rs.getInt("COD_FUNC"));
+        funcionario.setCpf(rs.getString("CPF"));
+        funcionario.setPrimeiroNome(rs.getString("PRIMEIRO_NOME"));
+        funcionario.setUltimoNome(rs.getString("ULTIMO_NOME"));
+        funcionario.setEndereco(rs.getString("ENDERECO"));
+        funcionario.setDataNasc(rs.getDate("DATA_NASC"));
+        funcionario.setDdd(rs.getInt("DDD"));
+        funcionario.setTelefone(rs.getInt("TELEFONE"));
+        // Configurando o departamento associado ao funcionário
+        Departamento departamento = new Departamento();
+        departamento.setCodDep(rs.getInt("DEPARTAMENTO_COD_DEP"));
+        funcionario.setDepartamento(departamento);
+        return funcionario;
+    }
+    // demais métodos...
+
+    // Modelo Funcionario
+    public class Funcionario {
+
+        private int codFunc;
+        private String cpf;
+        private String primeiroNome;
+        private String ultimoNome;
+        private String endereco;
+        private Date dataNasc;
+        private int ddd;
+        private int telefone;
+        private Departamento departamento;
+
+        // Construtor
+        public Funcionario() {
+        }
+
+        public Funcionario(String cpf, String primeiroNome, String ultimoNome, String endereco, Date dataNasc,
+                           int ddd, int telefone, Departamento departamento) {
+            this.cpf = cpf;
+            this.primeiroNome = primeiroNome;
+            this.ultimoNome = ultimoNome;
+            this.endereco = endereco;
+            this.dataNasc = dataNasc;
+            this.ddd = ddd;
+            this.telefone = telefone;
+            this.departamento = departamento;
+        }
+
+        public Funcionario(int codFunc, String cpf, String primeiroNome, String ultimoNome, String endereco, Date dataNasc,
+                           int ddd, int telefone, Departamento departamento) {
+            this.codFunc = codFunc;
+            this.cpf = cpf;
+            this.primeiroNome = primeiroNome;
+            this.ultimoNome = ultimoNome;
+            this.endereco = endereco;
+            this.dataNasc = dataNasc;
+            this.ddd = ddd;
+            this.telefone = telefone;
+            this.departamento = departamento;
+        }
+
+        // Getters e Setters
+        public int getCodFunc() {
+            return codFunc;
+        }
+
+        public String getCpf() {
+            return cpf;
+        }
+
+        public void setCpf(String cpf) {
+            this.cpf = cpf;
+        }
+
+        public String getPrimeiroNome() {
+            return primeiroNome;
+        }
+
+        public void setPrimeiroNome(String primeiroNome) {
+            this.primeiroNome = primeiroNome;
+        }
+
+        public String getUltimoNome() {
+            return ultimoNome;
+        }
+
+        public void setUltimoNome(String ultimoNome) {
+            this.ultimoNome = ultimoNome;
+        }
+
+        public String getEndereco() {
+            return endereco;
+        }
+
+        public void setEndereco(String endereco) {
+            this.endereco = endereco;
+        }
+
+        public Date getDataNasc() {
+            return dataNasc;
+        }
+
+        public void setDataNasc(Date dataNasc) {
+            this.dataNasc = dataNasc;
+        }
+
+        public int getDdd() {
+            return ddd;
+        }
+
+        public void setDdd(int ddd) {
+            this.ddd = ddd;
+        }
+
+        public int getTelefone() {
+            return telefone;
+        }
+
+        public void setTelefone(int telefone) {
+            this.telefone = telefone;
+        }
+
+        public Departamento getDepartamento() {
+            return departamento;
+        }
+
+        public void setDepartamento(Departamento departamento) {
+            this.departamento = departamento;
+        }
+
+        @Override
+        public String toString() {
+            return "Funcionario{" +
+                    "codFunc=" + codFunc +
+                    ", cpf='" + cpf + '\'' +
+                    ", primeiroNome='" + primeiroNome + '\'' +
+                    ", ultimoNome='" + ultimoNome + '\'' +
+                    ", endereco='" + endereco + '\'' +
+                    ", dataNasc=" + dataNasc +
+                    ", ddd=" + ddd +
+                    ", telefone=" + telefone +
+                    ", departamento=" + departamento +
+                    '}';
+        }
+    }
+}
