@@ -5,10 +5,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class DepartamentoDAO {
     private Connection connection;
 
-    public DepartamentoDAO() {
+    public DepartamentoDAO(Connection connection) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "usuario", "senha");
