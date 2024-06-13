@@ -4,48 +4,51 @@ import java.util.Date;
 
 public class Funcionario {
 
-    private int codFunc;
+    private int cod_func;
     private String cpf;
-    private String primeiroNome;
-    private String ultimoNome;
-    private String endereco;
-    private Date dataNasc;
-    private int ddd;
-    private int telefone;
-    private Departamento departamento;
+    private String primeiro_nome;
+    private String ultimo_nome;
+    private String endereco_func;
+    private Date data_nasc;
+    private int ddd_func;
+    private int telefone_func;
+    private int departamento_cod_dep;
 
-    // Construtor
     public Funcionario() {
     }
 
-    public Funcionario(String cpf, String primeiroNome, String ultimoNome, String endereco, Date dataNasc,
-                       int ddd, int telefone, Departamento departamento) {
+    public Funcionario(String cpf, String primeiro_nome, String ultimo_nome, String endereco_func, Date data_nasc,
+                       int ddd_func, int telefone_func, int departamento_cod_dep) {
         this.cpf = cpf;
-        this.primeiroNome = primeiroNome;
-        this.ultimoNome = ultimoNome;
-        this.endereco = endereco;
-        this.dataNasc = dataNasc;
-        this.ddd = ddd;
-        this.telefone = telefone;
-        this.departamento = departamento;
+        this.primeiro_nome = primeiro_nome;
+        this.ultimo_nome = ultimo_nome;
+        this.endereco_func = endereco_func;
+        this.data_nasc = data_nasc;
+        this.ddd_func = ddd_func;
+        this.telefone_func = telefone_func;
+        this.departamento_cod_dep = departamento_cod_dep;
     }
 
-    public Funcionario(int codFunc, String cpf, String primeiroNome, String ultimoNome, String endereco, Date dataNasc,
-                       int ddd, int telefone, Departamento departamento) {
-        this.codFunc = codFunc;
+    public Funcionario(int cod_func, String cpf, String primeiro_nome, String ultimo_nome, String endereco_func, Date data_nasc,
+                       int ddd_func, int telefone_func, int departamento_cod_dep) {
+        this.cod_func = cod_func;
         this.cpf = cpf;
-        this.primeiroNome = primeiroNome;
-        this.ultimoNome = ultimoNome;
-        this.endereco = endereco;
-        this.dataNasc = dataNasc;
-        this.ddd = ddd;
-        this.telefone = telefone;
-        this.departamento = departamento;
+        this.primeiro_nome = primeiro_nome;
+        this.ultimo_nome = ultimo_nome;
+        this.endereco_func = endereco_func;
+        this.data_nasc = data_nasc;
+        this.ddd_func = ddd_func;
+        this.telefone_func = telefone_func;
+        this.departamento_cod_dep = departamento_cod_dep;
     }
 
-    // Getters e Setters
-    public int getCodFunc() {
-        return codFunc;
+    public int getCod_func() {
+        return cod_func;
+    }
+
+
+    public void setCod_func(int codFunc) {
+        this.cod_func = codFunc;
     }
 
     public String getCpf() {
@@ -56,74 +59,74 @@ public class Funcionario {
         this.cpf = cpf;
     }
 
-    public String getPrimeiroNome() {
-        return primeiroNome;
+    public String getPrimeiro_nome() {
+        return primeiro_nome;
     }
 
-    public void setPrimeiroNome(String primeiroNome) {
-        this.primeiroNome = primeiroNome;
+    public void setPrimeiro_nome(String primeiro_nome) {
+        this.primeiro_nome = primeiro_nome;
     }
 
-    public String getUltimoNome() {
-        return ultimoNome;
+    public String getUltimo_nome() {
+        return ultimo_nome;
     }
 
-    public void setUltimoNome(String ultimoNome) {
-        this.ultimoNome = ultimoNome;
+    public void setUltimo_nome(String ultimo_nome) {
+        this.ultimo_nome = ultimo_nome;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getEndereco_func() {
+        return endereco_func;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setEndereco_func(String endereco_func) {
+        this.endereco_func = endereco_func;
     }
 
-    public Date getDataNasc() {
-        return dataNasc;
+    public Date getData_nasc() {
+        return data_nasc;
     }
 
-    public void setDataNasc(Date dataNasc) {
-        this.dataNasc = dataNasc;
+    public void setData_nasc(Date data_nasc) {
+        this.data_nasc = data_nasc;
     }
 
-    public int getDdd() {
-        return ddd;
+    public int getDdd_func() {
+        return ddd_func;
     }
 
-    public void setDdd(int ddd) {
-        this.ddd = ddd;
+    public void setDdd_func(int ddd_func) {
+        this.ddd_func = ddd_func;
     }
 
-    public int getTelefone() {
-        return telefone;
+    public int getTelefone_func() {
+        return telefone_func;
     }
 
-    public void setTelefone(int telefone) {
-        this.telefone = telefone;
+    public void setTelefone_func(int telefone_func) {
+        this.telefone_func = telefone_func;
     }
 
-    public Departamento getDepartamento() {
-        return departamento;
+    public int getDepartamento_cod_dep() {
+        return departamento_cod_dep;
     }
 
-    public void setDepartamento(Departamento departamento) {
-        this.departamento = departamento;
+    public void setDepartamento_cod_dep(int departamento_cod_dep) {
+        this.departamento_cod_dep = departamento_cod_dep;
     }
 
     @Override
     public String toString() {
-        return "Funcionario{" +
-                "codFunc=" + codFunc +
-                ", cpf='" + cpf + '\'' +
-                ", primeiroNome='" + primeiroNome + '\'' +
-                ", ultimoNome='" + ultimoNome + '\'' +
-                ", endereco='" + endereco + '\'' +
-                ", dataNasc=" + dataNasc +
-                ", ddd=" + ddd +
-                ", telefone=" + telefone +
-                ", departamento=" + departamento +
-                '}';
+        return "Funcionario " +
+                "[cod_func=" + cod_func +
+                ", cpf=" + cpf +
+                ", primeiro_nome=" + primeiro_nome +
+                ", ultimo_nome=" + ultimo_nome +
+                ", endereco_func=" + endereco_func +
+                ", data_nasc=" + data_nasc +
+                ", ddd_func=" + ddd_func +
+                ", telefone_func=" + telefone_func +
+                ", departamento_cod_dep=" + departamento_cod_dep +
+                "]";
     }
 }
