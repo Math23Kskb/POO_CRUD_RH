@@ -10,12 +10,7 @@ public class DepartamentoDAO {
     private Connection connection;
 
     public DepartamentoDAO() {
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mydb", "usuario", "senha");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        this.connection = DatabaseConnection.getConnection();
     }
 
     public void adicionarDepartamento(Departamento departamento) {
