@@ -4,33 +4,22 @@ public class Departamento {
     private int codDep;
     private String cnpj;
     private String nome;
-    private String endereco;
-    private int ddd;
-    private int telefone;
-
-    // Construtores, getters e setters
+    private String endereco_dep;
+    private int ddd_dep;
+    private int telefone_dep;
 
     public Departamento() {
     }
 
-    public Departamento(String cnpj, String nome, String endereco, int ddd, int telefone) {
-        this.cnpj = cnpj;
-        this.nome = nome;
-        this.endereco = endereco;
-        this.ddd = ddd;
-        this.telefone = telefone;
-    }
-
-    public Departamento(int codDep, String cnpj, String nome, String endereco, int ddd, int telefone) {
+    public Departamento(int codDep, String cnpj, String nome, String endereco_dep, int ddd_dep, int telefone_dep) {
         this.codDep = codDep;
         this.cnpj = cnpj;
         this.nome = nome;
-        this.endereco = endereco;
-        this.ddd = ddd;
-        this.telefone = telefone;
+        this.endereco_dep = endereco_dep;
+        this.ddd_dep = ddd_dep;
+        this.telefone_dep = telefone_dep;
     }
 
-    // Getters e Setters
     public int getCodDep() {
         return codDep;
     }
@@ -55,39 +44,38 @@ public class Departamento {
         this.nome = nome;
     }
 
-    public String getEndereco() {
-        return endereco;
+    public String getEndereco_dep() {
+        return endereco_dep;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setEndereco_dep(String endereco_dep) {
+        this.endereco_dep = endereco_dep;
     }
 
-    public int getDdd() {
-        return ddd;
+    public int getDdd_dep() {
+        return ddd_dep;
     }
 
-    public void setDdd(int ddd) {
-        this.ddd = ddd;
+    public void setDdd_dep(int ddd_dep) {
+        this.ddd_dep = ddd_dep;
     }
 
-    public int getTelefone() {
-        return telefone;
+    public int getTelefone_dep() {
+        return telefone_dep;
     }
 
-    public void setTelefone(int telefone) {
-        this.telefone = telefone;
+    public void setTelefone_dep(int telefone_dep) {
+        this.telefone_dep = telefone_dep;
     }
 
     @Override
     public String toString() {
-        return "Departamento{" +
-                "codDep=" + codDep +
-                ", cnpj='" + cnpj + '\'' +
-                ", nome='" + nome + '\'' +
-                ", endereco='" + endereco + '\'' +
-                ", ddd=" + ddd +
-                ", telefone=" + telefone +
-                '}';
+        return "Departamento:\n" +
+                "\ncodDep:" + codDep +
+                "\nCNPJ:" + cnpj +
+                "\nNome:" + nome +
+                "\nEndereço:" + endereco_dep +
+                "\nDDD:" + ddd_dep +
+                "\nTelefone:" + telefone_dep;
     }
 }

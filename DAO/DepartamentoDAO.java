@@ -1,6 +1,7 @@
 package DAO;
 
 import Model.Departamento;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +24,9 @@ public class DepartamentoDAO {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, departamento.getCnpj());
             stmt.setString(2, departamento.getNome());
-            stmt.setString(3, departamento.getEndereco());
-            stmt.setInt(4, departamento.getDdd());
-            stmt.setInt(5, departamento.getTelefone());
+            stmt.setString(3, departamento.getEndereco_dep());
+            stmt.setInt(4, departamento.getDdd_dep());
+            stmt.setInt(5, departamento.getTelefone_dep());
             stmt.executeUpdate();
             stmt.close();
         } catch (SQLException e) {
@@ -45,9 +46,9 @@ public class DepartamentoDAO {
                 departamento.setCodDep(rs.getInt("COD_DEP"));
                 departamento.setCnpj(rs.getString("CNPJ"));
                 departamento.setNome(rs.getString("NOME"));
-                departamento.setEndereco(rs.getString("ENDERECO"));
-                departamento.setDdd(rs.getInt("DDD"));
-                departamento.setTelefone(rs.getInt("TELEFONE"));
+                departamento.setEndereco_dep(rs.getString("ENDERECO"));
+                departamento.setDdd_dep(rs.getInt("DDD"));
+                departamento.setTelefone_dep(rs.getInt("TELEFONE"));
                 departamentos.add(departamento);
             }
             rs.close();
@@ -56,5 +57,34 @@ public class DepartamentoDAO {
             e.printStackTrace();
         }
         return departamentos;
+    }
+
+    public void atualizarDepartamento(Departamento departamento) {
+        String sql = "UPDATE DEPARTAMENTO SET CNPJ = ?, NOME = ?, ENDERECO = ?, DDD = ?, TELEFONE = ? WHERE COD_DEP = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, departamento.getCnpj());
+            stmt.setString(2, departamento.getNome());
+            stmt.setString(3, departamento.getEndereco_dep());
+            stmt.setInt(4, departamento.getDdd_dep());
+            stmt.setInt(5, departamento.getTelefone_dep());
+            stmt.setInt(6, departamento.getCodDep());
+            stmt.executeUpdate();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void excluirDepartamento(int codDep) {
+        String sql = "DELETE FROM DEPARTAMENTO WHERE COD_DEP = ?";
+        try {
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, codDep);
+            stmt.executeUpdate();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
