@@ -1,13 +1,9 @@
-# POO_CRUD_RH
 
-Integrantes
+# *Code Structure*
 
-Guilherme Feliphe Reale 
+-DAO
+-MODEL
+-VIEW
+-CONTROLLER
 
-Lucas Fernandes Hidalgo 
-
-Matheos Chiyuki Kusakabe 
-
-Victor Shoiti Satake 
-
-Vitor Ferreira da Silva
+-----
