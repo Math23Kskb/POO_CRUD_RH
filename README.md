@@ -2,7 +2,7 @@
 
 - [@guilherme-reale](https://www.github.com/guilherme-reale)
 - [@mkdir-victor](https://www.github.com/mkdir-victor)
-- [@](https://www.github.com/)
+- [@vitorfdev](https://www.github.com/vitorfdev)
 - [@LCtrembala](https://www.github.com/LCtrembala)
 
 # *Project Description*
